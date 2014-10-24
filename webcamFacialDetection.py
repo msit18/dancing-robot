@@ -35,8 +35,6 @@ while True:
     # Prints to the Arduino serial when a face is detected
     if len(faces) > 0:
         ser.write("1")
-    else:
-        ser.write("0")
 
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
