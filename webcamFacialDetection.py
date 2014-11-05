@@ -39,6 +39,11 @@ while True:
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        midPoint = (int(x+0.5*w),int(y+0.5*h))
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        distanceX = abs(midPoint[0]-240)
+        distanceY = abs(midPoint[1]-320)
+        distance = ((distanceX)**2+(distanceY)**2)**0.5
 
     # Display the resulting frame
     cv2.imshow('Video', frame)
