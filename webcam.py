@@ -9,7 +9,7 @@ import cv2
 import sys
 import numpy as np
 #from indicoio import *
-
+isSmiling = False
 
 #python webcam.py haarcascade_frontalface_default.xml
 #runfile('C:/Users/jmorris/Documents/GitHub/dancing-robot/webcam.py', 'haarcascade_frontalface_default.xml')
@@ -54,11 +54,11 @@ while True:
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = frame[y:y+h, x:x+w]
         
-        """
+        
         eyes = eyeCascade.detectMultiScale(roi_gray)    
         for (ex,ey,ew,eh) in eyes:
             cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-        """
+        
         """
         mouth = mouthCascade.detectMultiScale(roi_gray)
         if len(mouth) > 3:
@@ -80,9 +80,12 @@ while True:
                 roi_mouth_gray = roi_gray[ey:ey+eh,ex:ex+ew]
                 roi_mouth_color = roi_color[ey:ey+eh,ex:ex+ew]
                 
+                
                 smiles = smileCascade.detectMultiScale(roi_mouth_gray)
                 for (sx,sy,sw,sh) in smiles:                    
                     cv2.rectangle(roi_mouth_color,(sx,sy),(sx+sw,sy+sh),(255,0,0),2)
+                    isSmiling = True
+                
         
         
         
